@@ -1,7 +1,5 @@
 package br.com.inmetrics.teste.controller;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,14 +20,9 @@ public class Controle extends Config {
 
 	}
 
-	@Dado("^acessada a pagina de cadastro no \"([^\"]*)\"$")
-	public void acessada_a_pagina_de_login_no(String ambiente) throws Throwable {
-		if (ambiente.contains("TEST")) {
-			driver.get("https://inm-test-app.herokuapp.com/accounts/signup/");
-		} else {
-			System.out.println("Ambiente não configurado");
-			driver.close();
-		}
+	@Dado("^acessada a \"([^\"]*)\"$")
+	public void acessada_a(String url) throws Throwable {
+		driver.get(url);
 	}
 
 	@Dado("^informado o \"([^\"]*)\"$")
@@ -56,16 +49,10 @@ public class Controle extends Config {
 	}
 
 	@Entao("^a aplicacao deve redirecionar para a pagina \"([^\"]*)\"$")
-	public void a_aplicacao_deve_redirecionar_para_a_pagina_de_login(String url) throws Throwable {
-		Thread.sleep(1500);
+	public void a_aplicacao_deve_redirecionar_para_pagina(String url) throws Throwable {
 		String urlAtual = driver.getCurrentUrl();
-		driver.close();
 		Assert.assertEquals(true, urlAtual.contains(url));
-	}
-
-	@Entao("^a aplicacao deve redirecionar para pagina$")
-	public void a_aplicacao_deve_redirecionar_para_pagina() throws Throwable {
-		System.out.println("aaa");
+		driver.close();
 	}
 
 	@Entao("^a aplicacao deve informar que o usuario ja esta cadastrado$")
@@ -82,6 +69,34 @@ public class Controle extends Config {
 		PageFactory.initElements(driver, cad);
 		Assert.assertTrue(cad.validarMsgSenhaErrada());
 		driver.close();
+	}
+
+	@Dado("^realizar login$")
+	public void realizar_login() throws Throwable {
+		Login login = new Login();
+		PageFactory.initElements(driver, login);
+		login.preencherUsuario("cadmo_robo");
+		login.preencherSenha("qwerty");
+		login.clickLogin();
+		Thread.sleep(1500);
+	}
+
+	@Dado("^realizar login invalido$")
+	public void realizar_login_invalido() throws Throwable {
+		Login login = new Login();
+		PageFactory.initElements(driver, login);
+		login.preencherUsuario("cadmo_robo");
+		login.preencherSenha("qwertyaaa");
+		login.clickLogin();
+		Thread.sleep(1500);
+	}
+
+	@Entao("^a aplicacao deve exibir a \"([^\"]*)\"$")
+	public void a_aplicacao_deve_exibir_a(String msg) throws Throwable {
+		Login login = new Login();
+		PageFactory.initElements(driver, login);
+		Assert.assertTrue(login.validarMsgLoginInvalido(msg));
+
 	}
 
 }

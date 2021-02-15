@@ -27,7 +27,7 @@ public class Login {
 	@CacheLookup
 	private WebElement pass;
 
-	@FindAll({ @FindBy(tagName = "txt1") })
+	@FindAll({ @FindBy(className = "alert") })
 	@CacheLookup
 	private List<WebElement> mensagens; //
 
@@ -66,19 +66,17 @@ public class Login {
 		return this;
 	}
 
-	public Boolean validarMsgUsuarioCadastro() {
+	public Boolean validarMsgLoginInvalido(String msg) {
 		try {
-			Thread.sleep(2500);
-			System.out.println(mensagens.get(0).getText());
-
+			Thread.sleep(500);
+			return mensagens.get(0).getText().contains(msg);
 		} catch (InterruptedException e) {
 			return false;
 		}
-		return true;
 
 	}
 
-	public Login clickCadastrar() {
+	public Login clickLogin() {
 		button.get(1).click();
 		return this;
 	}

@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features", tags = {
-		"@Inmetrics" }, glue = "br.com.inmetrics.teste.controller", monochrome = true, dryRun = false, plugin = {
+		"@Cadastro" }, glue = "br.com.inmetrics.teste.controller", monochrome = true, dryRun = false, plugin = {
 				"html:target/cucumber-html-report" })
 
 public class RunCucumberTest {

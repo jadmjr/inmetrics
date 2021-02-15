@@ -1,4 +1,4 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("features/Inmetrics.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("features/Cadastro.feature");
 formatter.feature({
   "comments": [
     {
@@ -14,7 +14,7 @@ formatter.feature({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
@@ -28,7 +28,7 @@ formatter.scenarioOutline({
 });
 formatter.step({
   "line": 6,
-  "name": "acessada a pagina de cadastro no \u003cambiente\u003e",
+  "name": "acessada a \u003curl\u003e",
   "keyword": "Dado "
 });
 formatter.step({
@@ -53,7 +53,7 @@ formatter.step({
 });
 formatter.step({
   "line": 11,
-  "name": "a aplicacao deve redirecionar para a pagina \u003curl\u003e",
+  "name": "a aplicacao deve redirecionar para a pagina \u003curlA\u003e",
   "keyword": "Entao "
 });
 formatter.examples({
@@ -64,23 +64,33 @@ formatter.examples({
   "rows": [
     {
       "cells": [
-        "ambiente",
+        "url",
         "usuario",
         "senha",
-        "url"
+        "urlA"
       ],
       "line": 14,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-dados-validos;;1"
     },
     {
       "cells": [
-        "\"TEST\"",
-        "\"julimarQaAQDDa\"",
-        "\"teste123\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
+        "\"cadmo_robo\"",
+        "\"qwerty\"",
         "\"https://inm-test-app.herokuapp.com/accounts/login/\""
       ],
       "line": 15,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-dados-validos;;2"
+    },
+    {
+      "cells": [
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
+        "\"julimarQaAQDDa\"",
+        "\"teste123\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/login/\""
+      ],
+      "line": 16,
+      "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-dados-validos;;3"
     }
   ],
   "keyword": "Exemplos"
@@ -95,13 +105,145 @@ formatter.scenario({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
 formatter.step({
   "line": 6,
-  "name": "acessada a pagina de cadastro no \"TEST\"",
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
+  "matchedColumns": [
+    0
+  ],
+  "keyword": "Dado "
+});
+formatter.step({
+  "line": 7,
+  "name": "informado o \"cadmo_robo\"",
+  "matchedColumns": [
+    1
+  ],
+  "keyword": "E "
+});
+formatter.step({
+  "line": 8,
+  "name": "a senha \"qwerty\"",
+  "matchedColumns": [
+    2
+  ],
+  "keyword": "E "
+});
+formatter.step({
+  "line": 9,
+  "name": "a confirmacao de senha \"qwerty\"",
+  "matchedColumns": [
+    2
+  ],
+  "keyword": "E "
+});
+formatter.step({
+  "line": 10,
+  "name": "clicar no botao cadastrar",
+  "keyword": "E "
+});
+formatter.step({
+  "line": 11,
+  "name": "a aplicacao deve redirecionar para a pagina \"https://inm-test-app.herokuapp.com/accounts/login/\"",
+  "matchedColumns": [
+    3
+  ],
+  "keyword": "Entao "
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
+    }
+  ],
+  "location": "Controle.acessada_a(String)"
+});
+formatter.result({
+  "duration": 11427586600,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "cadmo_robo",
+      "offset": 13
+    }
+  ],
+  "location": "Controle.informado_o(String)"
+});
+formatter.result({
+  "duration": 208974600,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "qwerty",
+      "offset": 9
+    }
+  ],
+  "location": "Controle.a_senha(String)"
+});
+formatter.result({
+  "duration": 81417700,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "qwerty",
+      "offset": 24
+    }
+  ],
+  "location": "Controle.a_confirmacao_de_senha(String)"
+});
+formatter.result({
+  "duration": 78745900,
+  "status": "passed"
+});
+formatter.match({
+  "location": "Controle.clicar_no_botao_cadastrar()"
+});
+formatter.result({
+  "duration": 90290500,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "https://inm-test-app.herokuapp.com/accounts/login/",
+      "offset": 45
+    }
+  ],
+  "location": "Controle.a_aplicacao_deve_redirecionar_para_pagina(String)"
+});
+formatter.result({
+  "duration": 880815200,
+  "error_message": "java.lang.AssertionError: expected:\u003ctrue\u003e but was:\u003cfalse\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:118)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_redirecionar_para_pagina(Controle.java:56)\r\n\tat ✽.Entao a aplicacao deve redirecionar para a pagina \"https://inm-test-app.herokuapp.com/accounts/login/\"(features/Cadastro.feature:11)\r\n",
+  "status": "failed"
+});
+formatter.scenario({
+  "line": 16,
+  "name": "Realizar cadastro com dados validos",
+  "description": "",
+  "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-dados-validos;;3",
+  "type": "scenario",
+  "keyword": "Esquema do Cenario",
+  "tags": [
+    {
+      "line": 2,
+      "name": "@Cadastro"
+    }
+  ]
+});
+formatter.step({
+  "line": 6,
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
   "matchedColumns": [
     0
   ],
@@ -147,14 +289,14 @@ formatter.step({
 formatter.match({
   "arguments": [
     {
-      "val": "TEST",
-      "offset": 34
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
     }
   ],
-  "location": "Controle.acessada_a_pagina_de_login_no(String)"
+  "location": "Controle.acessada_a(String)"
 });
 formatter.result({
-  "duration": 9094020400,
+  "duration": 6810874200,
   "status": "passed"
 });
 formatter.match({
@@ -167,7 +309,7 @@ formatter.match({
   "location": "Controle.informado_o(String)"
 });
 formatter.result({
-  "duration": 269054500,
+  "duration": 236388700,
   "status": "passed"
 });
 formatter.match({
@@ -180,7 +322,7 @@ formatter.match({
   "location": "Controle.a_senha(String)"
 });
 formatter.result({
-  "duration": 93588100,
+  "duration": 95426400,
   "status": "passed"
 });
 formatter.match({
@@ -193,14 +335,14 @@ formatter.match({
   "location": "Controle.a_confirmacao_de_senha(String)"
 });
 formatter.result({
-  "duration": 104026600,
+  "duration": 100765500,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.clicar_no_botao_cadastrar()"
 });
 formatter.result({
-  "duration": 1136176000,
+  "duration": 1241457300,
   "status": "passed"
 });
 formatter.match({
@@ -210,15 +352,15 @@ formatter.match({
       "offset": 45
     }
   ],
-  "location": "Controle.a_aplicacao_deve_redirecionar_para_a_pagina_de_login(String)"
+  "location": "Controle.a_aplicacao_deve_redirecionar_para_pagina(String)"
 });
 formatter.result({
-  "duration": 1689664300,
-  "error_message": "java.lang.AssertionError: expected:\u003ctrue\u003e but was:\u003cfalse\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:118)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_redirecionar_para_a_pagina_de_login(Controle.java:63)\r\n\tat ✽.Entao a aplicacao deve redirecionar para a pagina \"https://inm-test-app.herokuapp.com/accounts/login/\"(features/Inmetrics.feature:11)\r\n",
+  "duration": 7751800,
+  "error_message": "java.lang.AssertionError: expected:\u003ctrue\u003e but was:\u003cfalse\u003e\r\n\tat org.junit.Assert.fail(Assert.java:88)\r\n\tat org.junit.Assert.failNotEquals(Assert.java:834)\r\n\tat org.junit.Assert.assertEquals(Assert.java:118)\r\n\tat org.junit.Assert.assertEquals(Assert.java:144)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_redirecionar_para_pagina(Controle.java:56)\r\n\tat ✽.Entao a aplicacao deve redirecionar para a pagina \"https://inm-test-app.herokuapp.com/accounts/login/\"(features/Cadastro.feature:11)\r\n",
   "status": "failed"
 });
 formatter.scenarioOutline({
-  "line": 17,
+  "line": 18,
   "name": "Realizar cadastro com usuario cadastrado",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-usuario-cadastrado",
@@ -226,64 +368,64 @@ formatter.scenarioOutline({
   "keyword": "Esquema do Cenario"
 });
 formatter.step({
-  "line": 18,
-  "name": "acessada a pagina de cadastro no \u003cambiente\u003e",
+  "line": 19,
+  "name": "acessada a \u003curl\u003e",
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 19,
+  "line": 20,
   "name": "informado o \u003cusuario\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 20,
+  "line": 21,
   "name": "a senha \u003csenha\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 21,
+  "line": 22,
   "name": "a confirmacao de senha \u003csenha\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 22,
+  "line": 23,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 23,
+  "line": 24,
   "name": "a aplicacao deve informar que o usuario ja esta cadastrado",
   "keyword": "Entao "
 });
 formatter.examples({
-  "line": 25,
+  "line": 26,
   "name": "",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-usuario-cadastrado;",
   "rows": [
     {
       "cells": [
-        "ambiente",
+        "url",
         "usuario",
         "senha"
       ],
-      "line": 26,
+      "line": 27,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-usuario-cadastrado;;1"
     },
     {
       "cells": [
-        "\"TEST\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
         "\"julimarQa\"",
         "\"teste123\""
       ],
-      "line": 27,
+      "line": 28,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-usuario-cadastrado;;2"
     }
   ],
   "keyword": "Exemplos"
 });
 formatter.scenario({
-  "line": 27,
+  "line": 28,
   "name": "Realizar cadastro com usuario cadastrado",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-usuario-cadastrado;;2",
@@ -292,20 +434,20 @@ formatter.scenario({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
 formatter.step({
-  "line": 18,
-  "name": "acessada a pagina de cadastro no \"TEST\"",
+  "line": 19,
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
   "matchedColumns": [
     0
   ],
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 19,
+  "line": 20,
   "name": "informado o \"julimarQa\"",
   "matchedColumns": [
     1
@@ -313,7 +455,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 20,
+  "line": 21,
   "name": "a senha \"teste123\"",
   "matchedColumns": [
     2
@@ -321,7 +463,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 21,
+  "line": 22,
   "name": "a confirmacao de senha \"teste123\"",
   "matchedColumns": [
     2
@@ -329,26 +471,26 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 22,
+  "line": 23,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 23,
+  "line": 24,
   "name": "a aplicacao deve informar que o usuario ja esta cadastrado",
   "keyword": "Entao "
 });
 formatter.match({
   "arguments": [
     {
-      "val": "TEST",
-      "offset": 34
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
     }
   ],
-  "location": "Controle.acessada_a_pagina_de_login_no(String)"
+  "location": "Controle.acessada_a(String)"
 });
 formatter.result({
-  "duration": 7825286500,
+  "duration": 7374779000,
   "status": "passed"
 });
 formatter.match({
@@ -361,7 +503,7 @@ formatter.match({
   "location": "Controle.informado_o(String)"
 });
 formatter.result({
-  "duration": 151060300,
+  "duration": 207092300,
   "status": "passed"
 });
 formatter.match({
@@ -374,7 +516,7 @@ formatter.match({
   "location": "Controle.a_senha(String)"
 });
 formatter.result({
-  "duration": 113341100,
+  "duration": 119764600,
   "status": "passed"
 });
 formatter.match({
@@ -387,25 +529,25 @@ formatter.match({
   "location": "Controle.a_confirmacao_de_senha(String)"
 });
 formatter.result({
-  "duration": 109654200,
+  "duration": 99255200,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.clicar_no_botao_cadastrar()"
 });
 formatter.result({
-  "duration": 1168619800,
+  "duration": 1139530200,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.a_aplicacao_deve_informar_que_o_usuario_ja_esta_cadastrado()"
 });
 formatter.result({
-  "duration": 2761478800,
+  "duration": 6784571600,
   "status": "passed"
 });
 formatter.scenarioOutline({
-  "line": 29,
+  "line": 30,
   "name": "Realizar cadastro com confirmacao de senha incorreta",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta",
@@ -413,86 +555,86 @@ formatter.scenarioOutline({
   "keyword": "Esquema do Cenario"
 });
 formatter.step({
-  "line": 30,
-  "name": "acessada a pagina de cadastro no \u003cambiente\u003e",
+  "line": 31,
+  "name": "acessada a \u003curl\u003e",
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 31,
+  "line": 32,
   "name": "informado o \u003cusuario\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 32,
+  "line": 33,
   "name": "a senha \u003csenha\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 33,
+  "line": 34,
   "name": "a confirmacao de senha \u003cconfirmacao\u003e",
   "keyword": "E "
 });
 formatter.step({
-  "line": 34,
+  "line": 35,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 35,
+  "line": 36,
   "name": "a aplicacao deve informar que as senha informadas sao diferentes",
   "keyword": "Entao "
 });
 formatter.examples({
-  "line": 37,
+  "line": 38,
   "name": "",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;",
   "rows": [
     {
       "cells": [
-        "ambiente",
+        "url",
         "usuario",
         "senha",
         "confirmacao"
       ],
-      "line": 38,
+      "line": 39,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;1"
     },
     {
       "cells": [
-        "\"TEST\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
         "\"julimarQa\"",
         "\"teste123\"",
         "\"misturar\""
       ],
-      "line": 39,
+      "line": 40,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;2"
     },
     {
       "cells": [
-        "\"TEST\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
         "\"julimarQa\"",
         "\"teste123\"",
         "\"teste123\""
       ],
-      "line": 40,
+      "line": 41,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;3"
     },
     {
       "cells": [
-        "\"TEST\"",
+        "\"https://inm-test-app.herokuapp.com/accounts/signup/\"",
         "\"julimar12323Qa\"",
         "\"teste123\"",
         "\"teste123\""
       ],
-      "line": 41,
+      "line": 42,
       "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;4"
     }
   ],
   "keyword": "Exemplos"
 });
 formatter.scenario({
-  "line": 39,
+  "line": 40,
   "name": "Realizar cadastro com confirmacao de senha incorreta",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;2",
@@ -501,20 +643,20 @@ formatter.scenario({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
 formatter.step({
-  "line": 30,
-  "name": "acessada a pagina de cadastro no \"TEST\"",
+  "line": 31,
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
   "matchedColumns": [
     0
   ],
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 31,
+  "line": 32,
   "name": "informado o \"julimarQa\"",
   "matchedColumns": [
     1
@@ -522,7 +664,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 32,
+  "line": 33,
   "name": "a senha \"teste123\"",
   "matchedColumns": [
     2
@@ -530,7 +672,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 33,
+  "line": 34,
   "name": "a confirmacao de senha \"misturar\"",
   "matchedColumns": [
     3
@@ -538,26 +680,26 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 34,
+  "line": 35,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 35,
+  "line": 36,
   "name": "a aplicacao deve informar que as senha informadas sao diferentes",
   "keyword": "Entao "
 });
 formatter.match({
   "arguments": [
     {
-      "val": "TEST",
-      "offset": 34
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
     }
   ],
-  "location": "Controle.acessada_a_pagina_de_login_no(String)"
+  "location": "Controle.acessada_a(String)"
 });
 formatter.result({
-  "duration": 7079696900,
+  "duration": 8031761700,
   "status": "passed"
 });
 formatter.match({
@@ -570,7 +712,7 @@ formatter.match({
   "location": "Controle.informado_o(String)"
 });
 formatter.result({
-  "duration": 122609200,
+  "duration": 119750800,
   "status": "passed"
 });
 formatter.match({
@@ -583,7 +725,7 @@ formatter.match({
   "location": "Controle.a_senha(String)"
 });
 formatter.result({
-  "duration": 100356100,
+  "duration": 84192800,
   "status": "passed"
 });
 formatter.match({
@@ -596,25 +738,25 @@ formatter.match({
   "location": "Controle.a_confirmacao_de_senha(String)"
 });
 formatter.result({
-  "duration": 111760800,
+  "duration": 94744400,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.clicar_no_botao_cadastrar()"
 });
 formatter.result({
-  "duration": 1050488400,
+  "duration": 5084601100,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes()"
 });
 formatter.result({
-  "duration": 2688023800,
+  "duration": 3097015800,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 40,
+  "line": 41,
   "name": "Realizar cadastro com confirmacao de senha incorreta",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;3",
@@ -623,20 +765,20 @@ formatter.scenario({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
 formatter.step({
-  "line": 30,
-  "name": "acessada a pagina de cadastro no \"TEST\"",
+  "line": 31,
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
   "matchedColumns": [
     0
   ],
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 31,
+  "line": 32,
   "name": "informado o \"julimarQa\"",
   "matchedColumns": [
     1
@@ -644,7 +786,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 32,
+  "line": 33,
   "name": "a senha \"teste123\"",
   "matchedColumns": [
     2
@@ -652,7 +794,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 33,
+  "line": 34,
   "name": "a confirmacao de senha \"teste123\"",
   "matchedColumns": [
     3
@@ -660,26 +802,26 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 34,
+  "line": 35,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 35,
+  "line": 36,
   "name": "a aplicacao deve informar que as senha informadas sao diferentes",
   "keyword": "Entao "
 });
 formatter.match({
   "arguments": [
     {
-      "val": "TEST",
-      "offset": 34
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
     }
   ],
-  "location": "Controle.acessada_a_pagina_de_login_no(String)"
+  "location": "Controle.acessada_a(String)"
 });
 formatter.result({
-  "duration": 7886955300,
+  "duration": 7033274000,
   "status": "passed"
 });
 formatter.match({
@@ -692,7 +834,7 @@ formatter.match({
   "location": "Controle.informado_o(String)"
 });
 formatter.result({
-  "duration": 134781300,
+  "duration": 388613100,
   "status": "passed"
 });
 formatter.match({
@@ -705,7 +847,7 @@ formatter.match({
   "location": "Controle.a_senha(String)"
 });
 formatter.result({
-  "duration": 102523100,
+  "duration": 182543700,
   "status": "passed"
 });
 formatter.match({
@@ -718,26 +860,26 @@ formatter.match({
   "location": "Controle.a_confirmacao_de_senha(String)"
 });
 formatter.result({
-  "duration": 121654200,
+  "duration": 161746400,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.clicar_no_botao_cadastrar()"
 });
 formatter.result({
-  "duration": 992651800,
+  "duration": 1042434600,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes()"
 });
 formatter.result({
-  "duration": 2539980300,
-  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes(Controle.java:83)\r\n\tat ✽.Entao a aplicacao deve informar que as senha informadas sao diferentes(features/Inmetrics.feature:35)\r\n",
+  "duration": 2538103200,
+  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes(Controle.java:72)\r\n\tat ✽.Entao a aplicacao deve informar que as senha informadas sao diferentes(features/Cadastro.feature:36)\r\n",
   "status": "failed"
 });
 formatter.scenario({
-  "line": 41,
+  "line": 42,
   "name": "Realizar cadastro com confirmacao de senha incorreta",
   "description": "",
   "id": "realizar-teste-em-página-de-cadastro;realizar-cadastro-com-confirmacao-de-senha-incorreta;;4",
@@ -746,20 +888,20 @@ formatter.scenario({
   "tags": [
     {
       "line": 2,
-      "name": "@Inmetrics"
+      "name": "@Cadastro"
     }
   ]
 });
 formatter.step({
-  "line": 30,
-  "name": "acessada a pagina de cadastro no \"TEST\"",
+  "line": 31,
+  "name": "acessada a \"https://inm-test-app.herokuapp.com/accounts/signup/\"",
   "matchedColumns": [
     0
   ],
   "keyword": "Dado "
 });
 formatter.step({
-  "line": 31,
+  "line": 32,
   "name": "informado o \"julimar12323Qa\"",
   "matchedColumns": [
     1
@@ -767,7 +909,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 32,
+  "line": 33,
   "name": "a senha \"teste123\"",
   "matchedColumns": [
     2
@@ -775,7 +917,7 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 33,
+  "line": 34,
   "name": "a confirmacao de senha \"teste123\"",
   "matchedColumns": [
     3
@@ -783,26 +925,26 @@ formatter.step({
   "keyword": "E "
 });
 formatter.step({
-  "line": 34,
+  "line": 35,
   "name": "clicar no botao cadastrar",
   "keyword": "E "
 });
 formatter.step({
-  "line": 35,
+  "line": 36,
   "name": "a aplicacao deve informar que as senha informadas sao diferentes",
   "keyword": "Entao "
 });
 formatter.match({
   "arguments": [
     {
-      "val": "TEST",
-      "offset": 34
+      "val": "https://inm-test-app.herokuapp.com/accounts/signup/",
+      "offset": 12
     }
   ],
-  "location": "Controle.acessada_a_pagina_de_login_no(String)"
+  "location": "Controle.acessada_a(String)"
 });
 formatter.result({
-  "duration": 7189483400,
+  "duration": 7361121100,
   "status": "passed"
 });
 formatter.match({
@@ -815,7 +957,7 @@ formatter.match({
   "location": "Controle.informado_o(String)"
 });
 formatter.result({
-  "duration": 220667300,
+  "duration": 208513500,
   "status": "passed"
 });
 formatter.match({
@@ -828,7 +970,7 @@ formatter.match({
   "location": "Controle.a_senha(String)"
 });
 formatter.result({
-  "duration": 87259800,
+  "duration": 122360300,
   "status": "passed"
 });
 formatter.match({
@@ -841,22 +983,22 @@ formatter.match({
   "location": "Controle.a_confirmacao_de_senha(String)"
 });
 formatter.result({
-  "duration": 88493400,
+  "duration": 169127900,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.clicar_no_botao_cadastrar()"
 });
 formatter.result({
-  "duration": 1391787500,
+  "duration": 5088766200,
   "status": "passed"
 });
 formatter.match({
   "location": "Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes()"
 });
 formatter.result({
-  "duration": 2606934700,
-  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes(Controle.java:83)\r\n\tat ✽.Entao a aplicacao deve informar que as senha informadas sao diferentes(features/Inmetrics.feature:35)\r\n",
+  "duration": 2540243200,
+  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat br.com.inmetrics.teste.controller.Controle.a_aplicacao_deve_informar_que_as_senha_informadas_sao_diferentes(Controle.java:72)\r\n\tat ✽.Entao a aplicacao deve informar que as senha informadas sao diferentes(features/Cadastro.feature:36)\r\n",
   "status": "failed"
 });
 });
