@@ -16,7 +16,6 @@ public class Controle extends Config {
 
 	public Controle() {
 		inicializaNavegador();
-		inicializaEvidencia();
 
 	}
 
