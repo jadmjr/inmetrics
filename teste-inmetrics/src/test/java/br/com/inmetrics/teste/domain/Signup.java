@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.inmetrics.teste.config.Config;
 
-public class Cadastro {
+public class Signup {
 
 	private Map<String, String> data;
 	private WebDriver driver;
@@ -31,7 +31,7 @@ public class Cadastro {
 	@CacheLookup
 	private WebElement confirmpass; // txt1
 
-	@FindAll({ @FindBy(tagName = "txt1") })
+	@FindAll({ @FindBy(className = "txt1") })
 	@CacheLookup
 	private List<WebElement> mensagens; //
 
@@ -41,59 +41,71 @@ public class Cadastro {
 
 	private final String pageUrl = "/accounts/signup/";
 
-	public Cadastro() {
+	public Signup() {
 	}
 
-	public Cadastro(WebDriver driver) {
+	public Signup(WebDriver driver) {
 		this();
 		this.driver = driver;
 	}
 
-	public Cadastro(WebDriver driver, Map<String, String> data) {
+	public Signup(WebDriver driver, Map<String, String> data) {
 		this(driver);
 		this.data = data;
 	}
 
-	public Cadastro(WebDriver driver, Map<String, String> data, int timeout) {
+	public Signup(WebDriver driver, Map<String, String> data, int timeout) {
 		this(driver, data);
 		this.timeout = timeout;
 	}
 
 	// jadmjr
-	public Cadastro preencherUsuario(String user) {
+	public Signup preencherUsuario(String user) {
 		usuario.sendKeys(user);
 		return this;
 	}
 
-	public Cadastro preencherSenha(String senha) {
+	public Signup preencherSenha(String senha) {
 		pass.sendKeys(senha);
 		return this;
 	}
 
-	public Cadastro preencherConfirmacaoSenha(String confirmaSenha) {
+	public Signup preencherConfirmacaoSenha(String confirmaSenha) {
 		confirmpass.sendKeys(confirmaSenha);
 		return this;
 	}
 
 	public Boolean validarMsgUsuarioCadastro() {
 		try {
-			Thread.sleep(2500);
-			System.out.println(mensagens.get(0).getText());
-
-		} catch (InterruptedException e) {
+			String msg = mensagens.get(0).getText();
+			if (msg.contains("Usuário já cadastrado"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
 			return false;
 		}
-		return true;
-
 	}
 
-	public Cadastro clickCadastrar() {
+	public Boolean validarMsgSenhaErrada() {
+		try {
+			String msg = mensagens.get(1).getText();
+			if (msg.contains("Senhas não combinam"))
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public Signup clickCadastrar() {
 		button.get(1).click();
 		return this;
 	}
 	// jadmjr
 
-	public Cadastro verifyPageUrl() {
+	public Signup verifyPageUrl() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
 				return d.getCurrentUrl().contains(pageUrl);
